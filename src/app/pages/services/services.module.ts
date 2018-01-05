@@ -1,13 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlogComponent } from './blog.component';
+import { ServicesComponent } from './services.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRouter: Routes = [
   {
     path: '',
-    component: BlogComponent
+    component: ServicesComponent
   }
 ];
 
@@ -18,13 +18,13 @@ const appRouter: Routes = [
     RouterModule.forChild(appRouter)
   ],
   declarations: [
-    BlogComponent
+    ServicesComponent
   ],
   exports: [
     RouterModule
   ],
   providers: [
-    // BlogService,
+    // ServicesService,
   ]
 })
-export class BlogModule { }
+export class ServicesModule { }
