@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.btn.btn-outline-light {
+    /* border-radius: 0; */
+    box-shadow: none;
+}
+.btn.btn-outline-light:focus {
+    background-color: none;
+}

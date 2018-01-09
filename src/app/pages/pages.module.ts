@@ -28,6 +28,10 @@ const appRouter: Routes = [
       {
         path: 'services',
         loadChildren: './services/services.module#ServicesModule'
+      },
+      {
+        path: 'registration',
+        loadChildren: './registration/registration.module#RegistrationModule'
       }
     ]
   }
