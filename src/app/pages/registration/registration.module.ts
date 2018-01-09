@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ export const appRouter: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(appRouter)
+    RouterModule.forChild(appRouter),
+    ReactiveFormsModule
   ],
   declarations: [RegistrationComponent],
   exports: [

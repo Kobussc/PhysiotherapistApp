@@ -1,36 +1,91 @@
-<div class="site-wrapper">
-
-    <div class="site-wrapper-inner">
-
-      <div class="cover-container">
-
-        <header class="masthead clearfix">
-          <div class="inner">
-            <h3 class="masthead-brand">Cover</h3>
-            <nav class="nav nav-masthead">
-              <a class="nav-link active" href="#">Home</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Contact</a>
-            </nav>
-          </div>
-        </header>
-
-        <main role="main" class="inner cover">
-          <h1 class="cover-heading">Cover your page.</h1>
-          <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-          <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-          </p>
-        </main>
-
-        <footer class="mastfoot">
-          <div class="inner">
-            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-          </div>
-        </footer>
-
-      </div>
-
+<div class="card-header indigo white-text">
+  <div class="row">
+    <div class="col-md-1 center">
+      <a class="btn-floating btn-small action-button secondary-color-dark border0" [routerLink]="['../']">
+        <i class="fa fa-arrow-left"></i>
+      </a>
     </div>
-
+    <div class="col-md-10 text-center titleBar" id="titleBar">
+      <br>
+      <h3>Rejestracja wizyty</h3>
+      <p>Prosze wypełnić dane a w nastepnym kroku wybrać odpowiadający termin.</p>
+    </div>
   </div>
+</div>
+<div class="card-block">
+  <form [formGroup]="registrationForm" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-sm mt-4">
+          <label [class.active]="pesel.value" for="pesel" class="control-label">PESEL
+            <small class="red-text">*</small>
+          </label>
+          <input #pesel type="text" (change)="checkDate()" class="form-control" id="pesel">
+          <!-- <small *ngIf="registrationForm.get('pesel').hasError('required') && registrationForm.controls.pesel.touched" class="text-danger">To pole jest wymagane.</small> -->
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-sm mt-4">
+          <label for="dateOfBirth" class="control-label">Data urodzenia</label>
+            <input #dateOfBirth type="text" id="dateOfBirth" class="form-control" disabled autofocus>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-sm mt-2">
+          <label [class.active]="names.value" for="names">Imię
+            <small class="red-text">*</small>
+          </label>
+          <input #names type="text" class="form-control" id="names">
+          <!-- <small *ngIf="registrationForm.get('names').hasError('required') && registrationForm.controls.names.touched" class="text-danger">To pole jest wymagane.</small> -->
+          <br>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-sm mt-2">
+          <label [class.active]="surname.value" for="surname">Nazwisko
+            <small class="red-text">*</small>
+          </label>
+          <input mdbActive #surname type="text" class="form-control" id="surname">
+          <!-- <small *ngIf="registrationForm.get('surname').hasError('required') && registrationForm.controls.surname.touched" class="text-danger">To pole jest wymagane.</small> -->
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="mt-2">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="mt-2">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-sm mt-2">
+          <br>
+          <h1 class="font-weight-bold">Klient oświadcza, że:</h1>
+          <p class="font-weight-normal"> Klient dobrowolnie oświadcza, że:
+            <br> - wyraża zgodę na przetwarzanie jego danych osobowych przez Pośrednika i Agentów z nim współpracujących zgodnie
+            z ustawą z dnia 29-08-1997 r. o ochronie danych osobowych (tekst
+            <br> jednolity Dz. U. z 2002r. Nr 101 poz. 926, z późn. zm.) w celach związanych z realizacją zapisów ustawy z dnia
+            12 maja 2011 r. (Dz. U. 2011, Nr 126, poz. 715) o kredycie konsumenckim,
+            <br> oraz, że został poinformowany o prawie dostępu do swoich danych i o możliwości ich poprawiania
+            <br> - wyraża zgodę na przetwarzanie danych osobowych w celach statystycznych i marketingowych.</p>
+          <input type="checkbox" id="checkbox" ng-model="checked" value="" required>
+          <label for="checkbox">Potwierdzam złożenie podpisu przez klienta.
+            <small class="red-text">*</small>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-md-10">
+        <button class="btn btn-primary btn-rounded green accent-3 text-center border0">Dodaj</button>
+      </div>
+    </div>
+  </form>
+</div>

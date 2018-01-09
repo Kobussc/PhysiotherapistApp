@@ -20,3 +20,7 @@ li {
 }
 
 .active-link a  { font-weight: bold !important; }
+
+#registration {
+    border-radius: 0;
+}
