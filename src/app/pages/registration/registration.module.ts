@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 export const appRouter: Routes = [
   {
@@ -17,7 +18,7 @@ export const appRouter: Routes = [
     RouterModule.forChild(appRouter),
     ReactiveFormsModule
   ],
-  declarations: [RegistrationComponent],
+  declarations: [RegistrationComponent, CalendarComponent],
   exports: [
     RouterModule
   ]
