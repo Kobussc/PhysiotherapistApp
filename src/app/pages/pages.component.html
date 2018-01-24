@@ -31,13 +31,19 @@
     </div>
   </nav>
 
-  <main role="main" class="container">
+  <main role="main" flex>
     <div class="ng-view">
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
+          <br>
           <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   </main>
+  <footer class="footer bg-dark">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+  </footer>
 </body>

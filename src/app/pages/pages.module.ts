@@ -44,6 +44,9 @@ const appRouter: Routes = [
   ],
   declarations: [
     PagesComponent
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class PagesModule { }
