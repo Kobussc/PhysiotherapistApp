@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-block justify-content-cente">
+    <form [formGroup]="registrationForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label [class.active]="pesel.value" for="pesel" class="control-label">PESEL
+              <small class="text-danger">*</small>
+            </label>
+            <input #pesel type="text" (change)="checkDate()" class="form-control" id="pesel" formControlName="pesel" placeholder="numer pesel">
+            <div *ngIf="registrationForm.get('pesel').hasError('required') && registrationForm.controls.pesel.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="dateOfBirth" class="control-label">Data urodzenia</label>
+            <input #dateOfBirth type="text" id="dateOfBirth" formControlName="dateOfBirth" class="form-control" placeholder="Data pokaże sie po wpisaniu nr pesel" disabled autofocus>
+            <div *ngIf="registrationForm.get('dateOfBirth').hasError('required') && registrationForm.controls.dateOfBirth.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="name">Imię
+              <small class="text-danger">*</small>
+            </label>
+            <input #names type="text" class="form-control" id="name" formControlName="name" placeholder="Twoje imie">
+            <div *ngIf="registrationForm.get('name').hasError('required') && registrationForm.controls.name.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label [class.active]="surname.value" for="surname">Nazwisko
+              <small class="text-danger">*</small>
+            </label>
+            <input mdbActive #surname type="text" class="form-control" id="surname" formControlName="surname" placeholder="Twoje nazwisko">
+            <div *ngIf="registrationForm.get('surname').hasError('required') && registrationForm.controls.surname.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="email">Email</label>
+            <small class="text-danger">*</small>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Kowalski@email.com">
+            <div *ngIf="registrationForm.get('email').hasError('required') && registrationForm.controls.email.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="phone">Numer telefonu</label>
+            <small class="text-danger">*</small>
+            <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="100200300">
+            <div *ngIf="registrationForm.get('phone').hasError('required') && registrationForm.controls.phone.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-md-9"><br>
+          <button class="btn btn-primary btn-rounded green accent-3 text-center border0">Dalej</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div><br>

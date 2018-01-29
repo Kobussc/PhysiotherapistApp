@@ -4,11 +4,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationComponent } from './registration.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { PersonalComponent } from './personal/personal.component';
+import { SummaryComponent } from './summary/summary.component';
 
 export const appRouter: Routes = [
   {
     path: '',
-    component: RegistrationComponent
+    component: RegistrationComponent,
+    children: [
+      {
+        path: 'calendar',
+        component: CalendarComponent
+      },
+      {
+        path: 'personal',
+        component: PersonalComponent
+      },
+      {
+        path: 'summary',
+        component: SummaryComponent
+      }
+    ]
   }
 ];
 
@@ -18,7 +34,7 @@ export const appRouter: Routes = [
     RouterModule.forChild(appRouter),
     ReactiveFormsModule
   ],
-  declarations: [RegistrationComponent, CalendarComponent],
+  declarations: [RegistrationComponent, CalendarComponent, PersonalComponent, SummaryComponent],
   exports: [
     RouterModule
   ]
