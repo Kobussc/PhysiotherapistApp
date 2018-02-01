@@ -1,4 +1,4 @@
-import { IMyDpOptions } from 'mydatepicker';
+import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged } from 'mydatepicker';
 import { FormGroup, FormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
@@ -15,6 +15,7 @@ export class CalendarComponent implements OnInit {
     disableWeekends: true,
     inline: true,
     dateFormat: 'dd.mm.yyyy',
+    allowDeselectDate: false
   };
 
   public calendarForm: FormGroup;
@@ -23,20 +24,30 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.calendarForm = this.formBuilder.group({
-      myDate: [null, Validators.required]
+      myDate: [null, Validators.required],
+      time: [null, Validators.required]
+
     });
   }
 
-  setDate(): void {
-    const date = new Date();
-    this.calendarForm.patchValue({myDate: {
-      date: {
-        year: date.getFullYear(),
-        month: date.getMonth() + 1,
-        day: date.getDate()}
-      }});
+  pickDate(event: IMyDateModel) {
+    console.log(event.date);
   }
-  clearDate(): void {
-    this.calendarForm.patchValue({myDate: null});
-  }
+
+  pickTime() {
+    console.log('asdf');
+    }
+
+  // setDate(): void {
+  //   const date = new Date();
+  //   this.calendarForm.patchValue({myDate: {
+  //     date: {
+  //       year: date.getFullYear(),
+  //       month: date.getMonth() + 1,
+  //       day: date.getDate()}
+  //     }});
+  // }
+  // clearDate(): void {
+  //   this.calendarForm.patchValue({myDate: null});
+  // }
 }

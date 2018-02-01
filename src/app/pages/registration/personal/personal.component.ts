@@ -22,27 +22,13 @@ export class PersonalComponent implements OnInit {
 
   buildForm() {
     this.registrationForm = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      pesel: ['', Validators.required],
       dateOfBirth: [''],
       email: ['', Validators.required],
-      phone: ['', Validators.required]
+      name: ['', Validators.required],
+      pesel: ['', Validators.required],
+      phone: ['', Validators.required],
+      surname: ['', Validators.required]
     });
-  }
-
-  isPeselValid(pesel: string) {
-    if (!/^[0-9]{11}$/.test(pesel)) {
-      return { pesel: true };
-    }
-    const weights = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
-
-    const checksum = pesel.substring(0, 10).split('')
-      .reduce((acc, c, index) => acc + Number(c) * weights[index], 0);
-
-    if (checksum % 10 !== Number(pesel[10])) {
-      return { pesel: true };
-    }
   }
 
   checkDate() {
@@ -62,6 +48,19 @@ export class PersonalComponent implements OnInit {
     this.registrationForm.patchValue({ dateOfBirth: date });
   }
 
+  isPeselValid(pesel: string) {
+    if (!/^[0-9]{11}$/.test(pesel)) {
+      return { pesel: true };
+    }
+    const weights = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
+
+    const checksum = pesel.substring(0, 10).split('')
+      .reduce((acc, c, index) => acc + Number(c) * weights[index], 0);
+
+    if (checksum % 10 !== Number(pesel[10])) {
+      return { pesel: true };
+    }
+  }
 
   markAsTouched(fg: AbstractControl) {
     if (fg instanceof FormGroup) {

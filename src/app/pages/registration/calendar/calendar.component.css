@@ -1,0 +1,8 @@
+.card-block {
+    margin-left: 17%;
+    padding: 20px;
+    float: none;
+}
+button:focus {
+    background-color: grey;
+}
