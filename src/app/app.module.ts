@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { MyDatePickerModule } from 'mydatepicker';
 import { RoutingModule } from './routing.module';
 
 
@@ -16,6 +17,7 @@ import { RoutingModule } from './routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MyDatePickerModule,
     RoutingModule
   ],
   providers: [

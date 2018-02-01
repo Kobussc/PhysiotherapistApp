@@ -1,10 +1,12 @@
+import { MyDatePickerModule } from 'mydatepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistrationComponent } from './registration.component';
+
 import { CalendarComponent } from './calendar/calendar.component';
 import { PersonalComponent } from './personal/personal.component';
+import { RegistrationComponent } from './registration.component';
 import { SummaryComponent } from './summary/summary.component';
 
 export const appRouter: Routes = [
@@ -32,9 +34,14 @@ export const appRouter: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(appRouter),
+    MyDatePickerModule,
     ReactiveFormsModule
   ],
-  declarations: [RegistrationComponent, CalendarComponent, PersonalComponent, SummaryComponent],
+  declarations: [
+    CalendarComponent,
+    PersonalComponent,
+    RegistrationComponent,
+    SummaryComponent],
   exports: [
     RouterModule
   ]
