@@ -1,6 +1,7 @@
 import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged } from 'mydatepicker';
-import { FormGroup, FormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
 
 @Component({
@@ -20,12 +21,15 @@ export class CalendarComponent implements OnInit {
 
   public calendarForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.calendarForm = this.formBuilder.group({
       myDate: [null, Validators.required],
-      time: [null, Validators.required]
+      myTime: [null, Validators.required]
 
     });
   }
@@ -34,9 +38,44 @@ export class CalendarComponent implements OnInit {
     console.log(event.date);
   }
 
-  pickTime() {
-    console.log('asdf');
+  pickTime(time: string) {
+    this.calendarForm.patchValue({ myTime: time });
+  }
+
+  markAsTouched(fg: AbstractControl) {
+    if (fg instanceof FormGroup) {
+      for (const key in fg.controls) {
+        if (fg.controls.hasOwnProperty(key)) {
+          this.markAsTouched(fg.controls[key]);
+        }
+      }
+    } else {
+      fg.markAsTouched();
     }
+  }
+
+  save() {
+    this.markAsTouched(this.calendarForm);
+    console.log(this.calendarForm.valid);
+    console.log(this.calendarForm.value);
+      if (!this.calendarForm.valid) {
+        alert('Prosze wypełnić wszystkie wymagane pola');
+      } else {
+        alert('Sukces! Pomyślnie dodano dane osobowe.');
+        this.router.navigate([`/registration/summary`]);
+      }
+      //   this.registrationService.add(this.registrationForm.value).subscribe(
+      //     response => {
+      //       // this.toast.success(`Pomyślnie dodano.`);
+      //       this.router.navigate([`/registration/calendar/`]);
+      //     },
+      //     err => {
+      //       // this.toast.error(`Błąd serwera, ${err}`);
+      //     });
+      // } else {
+      //   // this.toast.error(`Wypełnij wszystkie wymagane pola.`);
+      // }
+  }
 
   // setDate(): void {
   //   const date = new Date();

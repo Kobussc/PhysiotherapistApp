@@ -26,6 +26,10 @@ const appRouter: Routes = [
         loadChildren: './home/home.module#HomeModule'
       },
       {
+        path: 'login',
+        loadChildren: './login/login.module#LoginModule'
+      },
+      {
         path: 'services',
         loadChildren: './services/services.module#ServicesModule'
       },

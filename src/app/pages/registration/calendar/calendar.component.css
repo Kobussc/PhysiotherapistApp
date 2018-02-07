@@ -3,6 +3,29 @@
     padding: 20px;
     float: none;
 }
-button:focus {
-    background-color: grey;
+button {
+    background-color: #008975;
+    color: white;
+    border: none;
+}
+button:focus,
+button:hover {
+    background-color: #00AA8D;
+    box-shadow: none;
+    border: none;
+}
+.btn-success {
+    background-color: #427A82;
+}
+.btn-success:focus,
+.btn-success:hover {
+    background-color: #69969C;
+}
+.btn {
+    background-color: #427A82;
+    color: white;
+}
+.btn:focus,
+.btn:hover {
+    background-color: #69969C;
 }

@@ -3,3 +3,13 @@
     float: none;
     margin-bottom: 30px;
 }
+.btn {
+    background-color: #0E464E;
+    color: white;
+}
+.btn:hover,
+.btn:focus {
+    background-color: #69969C;
+    box-shadow: none;
+    /* border-color: #004D40; */
+}

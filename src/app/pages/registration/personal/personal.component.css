@@ -3,3 +3,11 @@
     float: none;
     margin-bottom: 30px;
 }
+.btn {
+    background-color: #427A82;
+    color: white;
+}
+.btn:focus,
+.btn:hover {
+    background-color: #69969C;
+}
