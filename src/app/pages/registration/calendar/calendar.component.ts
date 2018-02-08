@@ -3,6 +3,7 @@ import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-calendar',
@@ -23,7 +24,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -59,9 +61,9 @@ export class CalendarComponent implements OnInit {
     console.log(this.calendarForm.valid);
     console.log(this.calendarForm.value);
       if (!this.calendarForm.valid) {
-        alert('Prosze wypełnić wszystkie wymagane pola');
+        this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
-        alert('Sukces! Pomyślnie dodano dane osobowe.');
+        this.toastr.success('Wybrano date wizyty oraz godzine.');
         this.router.navigate([`/registration/summary`]);
       }
       //   this.registrationService.add(this.registrationForm.value).subscribe(

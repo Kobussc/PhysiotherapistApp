@@ -5,17 +5,15 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { RoutingModule } from './routing.module';
+import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 
-export const firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  databaseURL: '',
-  storageBucket: '',
-  messagingSenderId: ''
-};
+export const firebaseConfig = environment.firebaseConfig;
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -23,11 +21,14 @@ export const firebaseConfig = {
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     MyDatePickerModule,
-    RoutingModule
+    RoutingModule,
+    ToastrModule.forRoot()
   ],
   providers: [
   ],

@@ -1,19 +1,28 @@
 import { Router } from '@angular/router';
-import { FormGroup, Validators, AbstractControl, FormBuilder } from '@angular/forms';
+import { FormGroup, NgForm, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
+import { PersonService } from './persons/shared/person.service';
+import { ToastrService } from 'ngx-toastr';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.css']
+  styleUrls: ['./personal.component.css'],
+  providers: [PersonService]
 })
 export class PersonalComponent implements OnInit {
 
   registrationForm: FormGroup;
 
+  private personalId: string;
+
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private personService: PersonService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -79,21 +88,11 @@ export class PersonalComponent implements OnInit {
     console.log(this.registrationForm.valid);
     console.log(this.registrationForm.value);
       if (!this.registrationForm.valid) {
-        alert('Prosze wypełnić wszystkie wymagane pola');
+        this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
-        alert('Sukces! Pomyślnie dodano dane osobowe.');
+        this.toastr.success('Pomyślnie dodano dane osobowe.');
+        this.personService.insertPerson(this.registrationForm.value);
         this.router.navigate([`/registration/calendar`]);
       }
-    //   this.registrationService.add(this.registrationForm.value).subscribe(
-    //     response => {
-    //       // this.toast.success(`Pomyślnie dodano.`);
-    //       this.router.navigate([`/registration/calendar/`]);
-    //     },
-    //     err => {
-    //       // this.toast.error(`Błąd serwera, ${err}`);
-    //     });
-    // } else {
-    //   // this.toast.error(`Wypełnij wszystkie wymagane pola.`);
-    // }
   }
 }
