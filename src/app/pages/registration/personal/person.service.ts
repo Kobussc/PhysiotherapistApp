@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Person } from './person.model';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PersonService {
@@ -26,7 +27,7 @@ export class PersonService {
       phone: person.phone,
       surname: person.surname
     });
-  }
+    }
 
   updatePerson(person: Person) {
     this.personList.update(person.$key,
@@ -44,6 +45,5 @@ export class PersonService {
   deletePerson($key: string) {
     this.personList.remove($key);
   }
-
 
 }

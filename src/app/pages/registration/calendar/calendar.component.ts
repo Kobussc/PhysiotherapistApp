@@ -2,15 +2,23 @@ import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged } from 'mydatepicker';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { CalendarService } from './calendar.service';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
 import { ToastrService } from 'ngx-toastr';
+import { Response } from '@angular/http';
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  providers: [CalendarService]
 })
 export class CalendarComponent implements OnInit {
+
+  calendarForm: FormGroup;
+  private calendarId: string;
 
   public MyDatePickerOptions: IMyDpOptions = {
     firstDayOfWeek: 'mo',
@@ -20,16 +28,15 @@ export class CalendarComponent implements OnInit {
     allowDeselectDate: false
   };
 
-  public calendarForm: FormGroup;
-
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private router: Router,
+    private calendarService: CalendarService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    this.calendarForm = this.formBuilder.group({
+    this.calendarForm = this.fb.group({
       myDate: [null, Validators.required],
       myTime: [null, Validators.required]
 
@@ -64,31 +71,8 @@ export class CalendarComponent implements OnInit {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
         this.toastr.success('Wybrano date wizyty oraz godzine.');
+        this.calendarService.insertDay(this.calendarForm.value);
         this.router.navigate([`/registration/summary`]);
       }
-      //   this.registrationService.add(this.registrationForm.value).subscribe(
-      //     response => {
-      //       // this.toast.success(`Pomyślnie dodano.`);
-      //       this.router.navigate([`/registration/calendar/`]);
-      //     },
-      //     err => {
-      //       // this.toast.error(`Błąd serwera, ${err}`);
-      //     });
-      // } else {
-      //   // this.toast.error(`Wypełnij wszystkie wymagane pola.`);
-      // }
   }
-
-  // setDate(): void {
-  //   const date = new Date();
-  //   this.calendarForm.patchValue({myDate: {
-  //     date: {
-  //       year: date.getFullYear(),
-  //       month: date.getMonth() + 1,
-  //       day: date.getDate()}
-  //     }});
-  // }
-  // clearDate(): void {
-  //   this.calendarForm.patchValue({myDate: null});
-  // }
 }

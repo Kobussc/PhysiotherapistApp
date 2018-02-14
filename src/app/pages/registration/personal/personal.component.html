@@ -79,6 +79,15 @@
           </div>
         </div>
       </div>
+      <table class="table table-sm table-hover text-center">
+        <tr *ngFor="let person of persons$ | async">
+          <td>{{person.key}}</td>
+          <td>{{person.surname}}</td>
+          <td>{{person.dateOfBirth}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.phone}}</td>
+        </tr>
+      </table>
       <div class="row">
         <div class="offset-md-9">
           <br>

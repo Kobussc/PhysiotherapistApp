@@ -1,10 +1,13 @@
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Router } from '@angular/router';
 import { FormGroup, NgForm, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { PersonService } from './persons/shared/person.service';
+import { PersonService } from './person.service';
 import { ToastrService } from 'ngx-toastr';
 import { Response } from '@angular/http';
+import { Person } from './person.model';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-personal',
@@ -15,15 +18,22 @@ import { Response } from '@angular/http';
 export class PersonalComponent implements OnInit {
 
   registrationForm: FormGroup;
-
+  personList: AngularFireList<any>;
   private personalId: string;
 
   constructor(
+    private db: AngularFireDatabase,
     private fb: FormBuilder,
     private router: Router,
     private personService: PersonService,
     private toastr: ToastrService
-  ) { }
+  ) {
+    db.object('persons').snapshotChanges().map(action => {
+      const $key = action.payload.key;
+      const data = { $key, ...action.payload.val() };
+      return data;
+    }).subscribe(item => console.log(item.$key));
+  }
 
   ngOnInit() {
     this.buildForm();
@@ -83,10 +93,9 @@ export class PersonalComponent implements OnInit {
     }
   }
 
-  save() {
+  save(person) {
     this.markAsTouched(this.registrationForm);
     console.log(this.registrationForm.valid);
-    console.log(this.registrationForm.value);
       if (!this.registrationForm.valid) {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
