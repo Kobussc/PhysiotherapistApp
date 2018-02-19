@@ -19,7 +19,7 @@ export class PersonService {
 
   insertPerson(person: Person) {
     this.personList = this.firebase.list('persons');
-    this.personList.push({
+    const newPostRef = this.personList.push({
       dateOfBirth: person.dateOfBirth,
       email: person.email,
       name: person.name,
@@ -27,6 +27,8 @@ export class PersonService {
       phone: person.phone,
       surname: person.surname
     });
+    const postId = newPostRef.key;
+    console.log(postId);
     }
 
   updatePerson(person: Person) {

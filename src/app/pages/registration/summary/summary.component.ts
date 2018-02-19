@@ -12,6 +12,8 @@ import { Calendar } from '../calendar/calendar.model';
 })
 export class SummaryComponent implements OnInit {
 
+  personId: string;
+  calendarId: string;
   personList: Person[];
   calendarList: Calendar[];
   constructor(
@@ -20,25 +22,34 @@ export class SummaryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const x = this.personService.getData();
-    x.snapshotChanges().subscribe(item => {
-      this.personList = [];
-      item.forEach(element => {
-        const y = element.payload.toJSON();
-        y['$key'] = element.key;
-        this.personList.push(y as Person);
-      });
-    });
+    const id = window.location.href;
+    this.calendarId = id.slice(46, 70);
+    console.log(this.calendarId);
 
     const z = this.calendarService.getData();
     z.snapshotChanges().subscribe(item => {
       this.calendarList = [];
       item.forEach(element => {
         const u = element.payload.toJSON();
-        u['$key'] = element.key;
-      this.calendarList.push(u as Calendar);
+        if (element.key === this.calendarId) {
+          this.calendarList.push(u as Calendar);
+        }
+      console.log(element.payload.toJSON());
+      // this.calendarList.push(u as Calendar);
       });
     });
+
+    const x = this.personService.getData();
+    x.snapshotChanges().subscribe(item => {
+      this.personList = [];
+      item.forEach(element => {
+        const y = element.payload.toJSON();
+        if (element.key === this.calendarId) {
+          this.personList.push(y as Person);
+        }
+      });
+    });
+
   }
 
 }

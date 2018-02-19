@@ -31,6 +31,13 @@
                 <td>{{person.phone}}</td>
               </tr>
             </table>
+            <table class="table table-sm table-hover text-center">
+              <tr *ngFor="let calendar of calendarList">
+                <td>{{calendar.myDate.formatted}}</td>
+                <td>{{calendar.myTime}}</td>
+                <td>{{calendar.personId}}</td>
+              </tr>
+            </table>
           </div>
           <!-- <div class="col">
           </div> -->

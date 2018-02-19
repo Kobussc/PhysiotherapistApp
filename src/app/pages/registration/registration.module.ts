@@ -19,13 +19,21 @@ export const appRouter: Routes = [
         component: CalendarComponent
       },
       {
+        path: 'calendar/:id',
+        component: CalendarComponent
+      },
+      {
         path: 'personal',
         component: PersonalComponent
       },
       {
         path: 'summary',
         component: SummaryComponent
-      }
+      },
+      {
+        path: 'summary/id',
+        component: SummaryComponent
+      },
     ]
   }
 ];

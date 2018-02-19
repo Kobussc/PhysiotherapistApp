@@ -1,8 +1,10 @@
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged } from 'mydatepicker';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
+import { Calendar } from './calendar.model';
 import { CalendarService } from './calendar.service';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
 import { ToastrService } from 'ngx-toastr';
@@ -17,8 +19,10 @@ import { Response } from '@angular/http';
 })
 export class CalendarComponent implements OnInit {
 
+  sliced: string;
   calendarForm: FormGroup;
-  private calendarId: string;
+  calendarList: AngularFireList<any>;
+  selectedDay: Calendar = new Calendar();
 
   public MyDatePickerOptions: IMyDpOptions = {
     firstDayOfWeek: 'mo',
@@ -29,6 +33,8 @@ export class CalendarComponent implements OnInit {
   };
 
   constructor(
+    private route: ActivatedRoute,
+    private firebase: AngularFireDatabase,
     private fb: FormBuilder,
     private router: Router,
     private calendarService: CalendarService,
@@ -36,9 +42,14 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const id = window.location.href;
+    this.sliced = id.slice(47, 70);
+    console.log(this.sliced);
+
     this.calendarForm = this.fb.group({
       myDate: [null, Validators.required],
-      myTime: [null, Validators.required]
+      myTime: [null, Validators.required],
+      personId: ['']
 
     });
   }
@@ -63,7 +74,8 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  save() {
+  save(calendar: Calendar) {
+    this.calendarForm.patchValue({personId: this.sliced});
     this.markAsTouched(this.calendarForm);
     console.log(this.calendarForm.valid);
     console.log(this.calendarForm.value);
@@ -71,8 +83,10 @@ export class CalendarComponent implements OnInit {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
         this.toastr.success('Wybrano date wizyty oraz godzine.');
-        this.calendarService.insertDay(this.calendarForm.value);
-        this.router.navigate([`/registration/summary`]);
+        this.calendarList = this.firebase.list('calendars');
+        const newPostRef = this.calendarList.push(this.calendarForm.value);
+        const postId = newPostRef.key;
+        this.router.navigate([`/registration/summary`, {id: postId}]);
       }
   }
 }
