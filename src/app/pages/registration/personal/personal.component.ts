@@ -90,7 +90,6 @@ export class PersonalComponent implements OnInit {
 
   save(person: Person) {
     this.markAsTouched(this.registrationForm);
-    console.log(this.registrationForm.valid);
       if (!this.registrationForm.valid) {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
@@ -98,7 +97,6 @@ export class PersonalComponent implements OnInit {
         this.personList = this.firebase.list('persons');
         const newPostRef = this.personList.push(this.registrationForm.value);
         const postId = newPostRef.key;
-        console.log(postId);
         this.router.navigate([`/registration/calendar`, {id: postId}]);
       }
   }

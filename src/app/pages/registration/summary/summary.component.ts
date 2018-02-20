@@ -24,18 +24,26 @@ export class SummaryComponent implements OnInit {
   ngOnInit() {
     const id = window.location.href;
     this.calendarId = id.slice(46, 70);
-    console.log(this.calendarId);
 
     const z = this.calendarService.getData();
     z.snapshotChanges().subscribe(item => {
       this.calendarList = [];
       item.forEach(element => {
+        let pID = 'asd';
         const u = element.payload.toJSON();
         if (element.key === this.calendarId) {
           this.calendarList.push(u as Calendar);
+          Object.getOwnPropertyNames(u).forEach(
+            function(val, idx, arra) {
+              console.log(val + ' = ' + u[val]);
+              if (val === 'personId') {
+                const idString = u[val];
+                pID = idString;
+              }
+            }
+          );
+          this.personId = pID;
         }
-      console.log(element.payload.toJSON());
-      // this.calendarList.push(u as Calendar);
       });
     });
 
@@ -44,12 +52,11 @@ export class SummaryComponent implements OnInit {
       this.personList = [];
       item.forEach(element => {
         const y = element.payload.toJSON();
-        if (element.key === this.calendarId) {
+        // y['$key'] = element.key;
+        if (element.key === this.personId) {
           this.personList.push(y as Person);
         }
       });
     });
-
   }
-
 }

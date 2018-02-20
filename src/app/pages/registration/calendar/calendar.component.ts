@@ -19,6 +19,7 @@ import { Response } from '@angular/http';
 })
 export class CalendarComponent implements OnInit {
 
+  dateFormatted: string;
   sliced: string;
   calendarForm: FormGroup;
   calendarList: AngularFireList<any>;
@@ -55,7 +56,7 @@ export class CalendarComponent implements OnInit {
   }
 
   pickDate(event: IMyDateModel) {
-    console.log(event.date);
+    this.dateFormatted = event.formatted;
   }
 
   pickTime(time: string) {
@@ -76,9 +77,8 @@ export class CalendarComponent implements OnInit {
 
   save(calendar: Calendar) {
     this.calendarForm.patchValue({personId: this.sliced});
+    this.calendarForm.patchValue({myDate: this.dateFormatted});
     this.markAsTouched(this.calendarForm);
-    console.log(this.calendarForm.valid);
-    console.log(this.calendarForm.value);
       if (!this.calendarForm.valid) {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
