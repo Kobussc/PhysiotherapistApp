@@ -1,5 +1,5 @@
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged } from 'mydatepicker';
+import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged, IMyOptions } from 'mydatepicker';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -32,7 +32,8 @@ export class CalendarComponent implements OnInit {
     disableWeekends: true,
     inline: true,
     dateFormat: 'dd.mm.yyyy',
-    allowDeselectDate: false
+    allowDeselectDate: false,
+    disableUntil: {year: 0, month: 0, day: 0}
   };
 
   constructor(
@@ -45,6 +46,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.disableUntil();
     const id = window.location.href;
     this.sliced = id.slice(47, 70);
 
@@ -55,6 +57,20 @@ export class CalendarComponent implements OnInit {
     });
     this.blockButtons();
   }
+
+  disableUntil() {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    const copy = this.getCopyOfOptions();
+    copy.disableUntil = {year: d.getFullYear(),
+                         month: d.getMonth() + 1,
+                         day: d.getDate()};
+    this.MyDatePickerOptions = copy;
+}
+
+getCopyOfOptions(): IMyOptions {
+    return JSON.parse(JSON.stringify(this.MyDatePickerOptions));
+}
 
   blockButtons() {
     (<HTMLInputElement> document.getElementById('8:00')).disabled = true;
@@ -78,6 +94,11 @@ export class CalendarComponent implements OnInit {
   }
 
   pickDate(event: IMyDateModel) {
+    const today = new Date();
+    const clicked = event.date;
+    // if (clicked.toDateString() < today.toDateString()) {
+
+    // }
     this.clearButtons();
     this.calendarForm.patchValue({myTime: null});
     this.dateFormatted = event.formatted;

@@ -19,37 +19,43 @@ button:hover {
     box-shadow: none;
     border: none;
 }
-.btn-success {
-    background-color: #427A82;
-}
-.btn-success:focus,
-.btn-success:hover {
-    background-color: #69969C;
-}
 .btn-group-vertical {
     margin-left: -20%;
+    box-shadow: none;
+    border: none;
 }
 .btn {
     background-color: #427A82;
     color: white;
+    box-shadow: none;
+    border: none;
 }
 .btn:focus {
     background-color: rgb(141, 181, 186);
+    box-shadow: none;
+    border: none;
 }
 .btn:hover {
     background-color: #69969C;
+    box-shadow: none;
+    border: none;
 }
 .btn-block {
     width: 81%;
     background-color: #4DB6AC;
+    box-shadow: none;
+    border: none;
 }
 .btn-block:hover,
 .btn-block:focus {
     background-color: #80CBC4;
+    box-shadow: none;
+    border: none;
 }
 :disabled,
 :disabled:focus,
 :disabled:hover {
     background-color: #ff0000;
-    border: 0;
+    box-shadow: none;
+    border: none;
 }
