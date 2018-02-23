@@ -36,7 +36,7 @@ export class PersonalComponent implements OnInit {
 
   buildForm() {
     this.registrationForm = this.fb.group({
-      dateOfBirth: [''],
+      dateOfBirth: [''], disabled: true,
       email: ['', Validators.required],
       name: ['', Validators.required],
       pesel: ['', Validators.required],

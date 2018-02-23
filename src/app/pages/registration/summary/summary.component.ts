@@ -35,7 +35,6 @@ export class SummaryComponent implements OnInit {
           this.calendarList.push(u as Calendar);
           Object.getOwnPropertyNames(u).forEach(
             function(val, idx, arra) {
-              console.log(val + ' = ' + u[val]);
               if (val === 'personId') {
                 const idString = u[val];
                 pID = idString;
@@ -52,7 +51,6 @@ export class SummaryComponent implements OnInit {
       this.personList = [];
       item.forEach(element => {
         const y = element.payload.toJSON();
-        // y['$key'] = element.key;
         if (element.key === this.personId) {
           this.personList.push(y as Person);
         }

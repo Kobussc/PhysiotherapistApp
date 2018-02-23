@@ -1,26 +1,26 @@
-<div class="text-center">
-  <br>
-  <h3>Rejestracja wizyty</h3>
-  <p>Prosze wypełnić dane osobowe.</p>
-  <div class="col-md-auto">
-    <a class="btn btn-lg active" [routerLinkActive]="['active']" [routerLink]="['/registration/personal']" aria-pressed="true">
-      <i class="material-icons">person</i>
-    </a>
-    <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/calendar']" aria-pressed="true">
-      <i class="material-icons">today</i>
-    </a>
-    <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/summary']" aria-pressed="true">
-      <i class="material-icons">description</i>
-    </a>
-  </div>
-</div>
 <br>
 <div class="card">
   <div class="card-header text-center">
+    <div class="text-center">
+      <br>
+      <h3>Rejestracja wizyty</h3>
+      <p>Prosze wypełnić dane osobowe.</p>
+      <div class="col-md-auto">
+        <a class="btn btn-lg active" [routerLinkActive]="['active']" [routerLink]="['/registration/personal']" aria-pressed="true">
+          <i class="material-icons">person</i>
+        </a>
+        <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/calendar']" aria-pressed="true">
+          <i class="material-icons">today</i>
+        </a>
+        <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/summary']" aria-pressed="true">
+          <i class="material-icons">description</i>
+        </a>
+      </div>
+    </div>
     <br>
-    <h3>Potrzebne dane osobowe do rejestracji.</h3>
+    <!-- <h3>Potrzebne dane osobowe do rejestracji.</h3> -->
   </div>
-  <div class="card-block justify-content-cente">
+  <div class="card-block justify-content-center">
     <form [formGroup]="registrationForm" (ngSubmit)="save()">
       <div class="row">
         <div class="col-md-5">
@@ -89,9 +89,9 @@
         </tr>
       </table>
       <div class="row">
-        <div class="offset-md-9">
+        <div class="col">
           <br>
-          <button class="btn text-center border0">Dalej</button>
+          <button class="btn btn-block">Dalej</button>
         </div>
       </div>
     </form>

@@ -21,8 +21,10 @@ export class CalendarComponent implements OnInit {
 
   dateFormatted: string;
   sliced: string;
+  calendarId: string;
   calendarForm: FormGroup;
-  calendarList: AngularFireList<any>;
+  calendarList: Calendar[];
+  cList: AngularFireList<any>;
   selectedDay: Calendar = new Calendar();
 
   public MyDatePickerOptions: IMyDpOptions = {
@@ -45,18 +47,69 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     const id = window.location.href;
     this.sliced = id.slice(47, 70);
-    console.log(this.sliced);
 
     this.calendarForm = this.fb.group({
       myDate: [null, Validators.required],
       myTime: [null, Validators.required],
       personId: ['']
-
     });
+    this.blockButtons();
+  }
+
+  blockButtons() {
+    (<HTMLInputElement> document.getElementById('8:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('9:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('10:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('11:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('12:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('13:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('14:00')).disabled = true;
+    (<HTMLInputElement> document.getElementById('15:00')).disabled = true;
+  }
+  clearButtons() {
+    (<HTMLInputElement> document.getElementById('8:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('9:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('10:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('11:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('12:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('13:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('14:00')).disabled = false;
+    (<HTMLInputElement> document.getElementById('15:00')).disabled = false;
   }
 
   pickDate(event: IMyDateModel) {
+    this.clearButtons();
+    this.calendarForm.patchValue({myTime: null});
     this.dateFormatted = event.formatted;
+    this.calendarForm.patchValue({myDate: this.dateFormatted});
+    const datePicked = this.calendarForm.get('myDate').value;
+    let dateTrue = false;
+    let timeGet = '';
+
+    const z = this.calendarService.getData();
+    z.snapshotChanges().subscribe(item => {
+      this.calendarList = [];
+      item.forEach(element => {
+        const u = element.payload.toJSON();
+          this.calendarList.push(u as Calendar);
+          Object.getOwnPropertyNames(u).forEach(
+            function(val, idx, arra) {
+              if (val === 'myDate') {
+                if (datePicked === u[val]) {
+                  dateTrue = true;
+                }
+              }
+              if (dateTrue === true) {
+                if (val === 'myTime') {
+                  timeGet = u[val];
+                  (<HTMLInputElement> document.getElementById(timeGet)).disabled = true;
+                  dateTrue = false;
+                }
+              }
+            }
+          );
+      });
+    });
   }
 
   pickTime(time: string) {
@@ -83,8 +136,8 @@ export class CalendarComponent implements OnInit {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
         this.toastr.success('Wybrano date wizyty oraz godzine.');
-        this.calendarList = this.firebase.list('calendars');
-        const newPostRef = this.calendarList.push(this.calendarForm.value);
+        this.cList = this.firebase.list('calendars');
+        const newPostRef = this.cList.push(this.calendarForm.value);
         const postId = newPostRef.key;
         this.router.navigate([`/registration/summary`, {id: postId}]);
       }
