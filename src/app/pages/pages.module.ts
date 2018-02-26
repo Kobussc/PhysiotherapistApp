@@ -14,6 +14,10 @@ const appRouter: Routes = [
         loadChildren: './about-me/about-me.module#AboutMeModule'
       },
       {
+        path: 'admin-panel',
+        loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'
+      },
+      {
         path: 'blog',
         loadChildren: './blog/blog.module#BlogModule'
       },

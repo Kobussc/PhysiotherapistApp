@@ -6,3 +6,8 @@
 .btn:focus {
     background-color: #80CBC4;
 }
+.card-block {
+    display: block;
+    margin-left: 26%;
+    width: 50%;
+}

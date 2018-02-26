@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
+  router: Router;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

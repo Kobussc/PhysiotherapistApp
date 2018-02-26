@@ -16,10 +16,28 @@ export const addMessage = functions.https.onRequest((request, response) => {
     });
 });
 
-// export const makeUppercase = functions.database.ref('/messages/{pushId}/original')
-//     .onWrite(event => {
-//         const original = event.data.val();
-//         console.log('Uppercasing', event.params.pushId, original);
-//         const uppercase = original.toUpperCase();
-//         return event.data.ref.parent.child('uppercase').set(uppercase);
-//     })
+// const nodemailer = require('nodemailer');
+// const gmailEmail = encodeURIComponent(functions.config().gmail.email);
+// const gmailPassword = encodeURIComponent(functions.config().gmail.password);
+// const mailTransport = nodemailer.createTransport(`smtps://${gmailEmail}:${gmailPassword}@smtp.gmail.com`);
+
+// exports.sendContactMessage = functions.database.ref('/messages/{pushKey}').onWrite(event => {
+//     const snapshot = event.data;
+//   // Only send email for new messages.
+//     if (snapshot.previous.val() || !snapshot.val().name) {
+//       return;
+//     }
+    
+//     const val = snapshot.val();
+    
+//     const mailOptions = {
+//       to: 'r4ven3ever@gmail.com',
+//       subject: `Information Request from ${val.name}`,
+//       html: val.html
+//     };
+//     return mailTransport.sendMail(mailOptions).then(() => {
+//       return console.log('Mail sent to: test@example.com')
+//     }
+//   );
+// }
+// )
