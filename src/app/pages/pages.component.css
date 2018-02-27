@@ -44,6 +44,12 @@ li {
 #login {
     border-radius: 0;
 }
+#logout {
+    border-radius: 0;
+}
+#admin {
+    border-radius: 0;
+}
 
 html {
     position: relative;

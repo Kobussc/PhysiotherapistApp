@@ -24,7 +24,9 @@
           <a class="nav-link" [routerLink]="['/contact']">Kontakt</a>
         </li>
       </ul>
-      <button type="button" class="btn btn-outline-light my-sm-1" id="login" [routerLink]="['/login']">Login</button>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="login" [routerLink]="['/login']">Zaloguj</button>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="admin" [routerLink]="['/admin-panel']">Panel admina</button>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="logout" (click)="logout()">Wyloguj</button>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
