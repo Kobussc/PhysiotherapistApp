@@ -1,4 +1,4 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { PagesComponent } from './../pages.component';
 import { ToastrService } from 'ngx-toastr';
 import * as firebase from 'firebase';
@@ -32,6 +32,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  markAsTouched(fg: AbstractControl) {
+    if (fg instanceof FormGroup) {
+      for (const key in fg.controls) {
+        if (fg.controls.hasOwnProperty(key)) {
+          this.markAsTouched(fg.controls[key]);
+        }
+      }
+    } else {
+      fg.markAsTouched();
+    }
+  }
+
   login() {
   const email = this.loginForm.get('email').value;
   const password = this.loginForm.get('password').value;
@@ -39,6 +51,7 @@ export class LoginComponent implements OnInit {
   const toastr = this.toastr;
   const pages = this.pages;
 
+  this.markAsTouched(this.loginForm);
   if (!this.loginForm.valid) {
     this.toastr.warning('Prosze wypełnić wszystkie pola');
   } else {

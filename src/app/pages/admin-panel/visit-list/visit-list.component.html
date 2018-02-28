@@ -1,0 +1,53 @@
+<h6 class="text-center">Rezerwacje</h6>
+<br/>
+<div class="row">
+  <div class="col">
+    <table class="table table-sm table-hover">
+      <tr class="text-center">
+        <th>Imie</th>
+        <th>Nazwisko</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>
+          <a class="btn">
+            <i class="material-icons md-36">t</i>
+          </a>
+        </th>
+      </tr>
+      <tr class="text-center" *ngFor="let person of personList">
+        <td>{{person.name}}</td>
+        <td>{{person.surname}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.phone}}</td>
+        <td style="padding-top: -10%;">
+          <a class="btn">
+            <i class="material-icons md-36">t</i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col">
+    <table class="table table-sm table-hover">
+      <tr class="text-center">
+        <th>Data</th>
+        <th>Godzina</th>
+        <th>
+          <a class="btn">
+            <i class="material-icons md-36">keyboard_arrow_down</i>
+          </a>
+        </th>
+      </tr>
+      <tr class="text-center" *ngFor="let calendar of calendarList">
+        <td>{{calendar.myDate}}</td>
+        <td>{{calendar.myTime}}</td>
+        <td>
+          <a class="btn" (click)="onDelete(calendar.$key, calendar.personID)">
+            <i class="material-icons md-36">delete_forever</i>
+          </a>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>

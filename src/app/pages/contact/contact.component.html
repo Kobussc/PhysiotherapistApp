@@ -1,3 +1,106 @@
-<p>
-  contact works!
-</p>
+<br>
+<div class="row">
+  <div class="col">
+    <i class="material-icons md-48">email</i>
+  </div>
+  <div class="col">
+
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <i class="material-icons md-48">phone_iphone</i>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <i class="material-icons md-48">location_on</i>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <i class="fa fa-facebook-square" style="font-size:48px"></i>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <i class="fa fa-instagram" style="font-size:48px"></i>
+  </div>
+  <div class="col">
+    <h5>www.instagram.com</h5>
+  </div>
+</div>
+<br>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d162686.51926337456!2d19.3529005!3d50.42290270000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471720cd5fbaab8b%3A0x9dff67fcb09e94b6!2sWysoka+k+Zawiercia%2C+42-450!5e0!3m2!1spl!2spl!4v1519848292625"
+  width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<br>
+<br>
+<div class="card">
+  <div class="card-header text-center">
+    <div class="text-center">
+      <br>
+      <h3>Formularz kontaktowy</h3>
+      <p>Prosze wypełnić dane osobowe.</p>
+    </div>
+    <br>
+  </div>
+  <div class="card-block justify-content-center">
+    <form [formGroup]="contactForm" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-5">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="name">Imię
+              <small class="text-danger">*</small>
+            </label>
+            <input #names type="text" class="form-control" id="name" formControlName="name" placeholder="Twoje imie">
+            <div *ngIf="contactForm.get('name').hasError('required') && contactForm.controls.name.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label [class.active]="surname.value" for="surname">Nazwisko
+            </label>
+            <input mdbActive #surname type="text" class="form-control" id="surname" formControlName="surname" placeholder="Twoje nazwisko">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="email">Email</label>
+            <small class="text-danger">*</small>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Kowalski@email.com">
+            <div *ngIf="contactForm.get('email').hasError('required') && contactForm.controls.email.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-sm mt-4">
+            <label for="phone">Numer telefonu</label>
+            <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="100200300">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-sm mt-4">
+            <label for="textArea">Example textarea</label>
+            <textarea class="form-control" id="textArea" formControlName="textArea" placeholder="Tutaj prosze wpisać treść wiadomości"
+              rows="3"></textarea>
+              <div *ngIf="contactForm.get('textArea').hasError('required') && contactForm.controls.textArea.touched" class="text-danger">To pole jest wymagane.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <br>
+          <button class="btn btn-block">Dalej</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>

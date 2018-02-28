@@ -1,3 +1,14 @@
-<p>
-  admin-panel works!
-</p>
+<br><div class="card">
+  <div class="card-header text-center">
+    <h3>Panel Admina</h3>
+  </div><br>
+  <div class="row">
+    <div class="col justify-content-center">
+      <button type="button" class="btn btn-outline-dark my-sm-1 btn-block" [routerLinkActive]="['active']" [routerLink]="['/admin-panel/visit-list']">Lista rezerwacji</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-dark my-sm-1 btn-block" [routerLinkActive]="['active']"  [routerLink]="['/admin-panel/contact-list']">Lista wiadomości</button>
+    </div>
+  </div><br>
+  <router-outlet></router-outlet>
+</div>

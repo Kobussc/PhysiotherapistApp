@@ -49,7 +49,8 @@ export const appRouter: Routes = [
     CalendarComponent,
     PersonalComponent,
     RegistrationComponent,
-    SummaryComponent],
+    SummaryComponent
+  ],
   exports: [
     RouterModule
   ]

@@ -1,0 +1,16 @@
+td,th {
+    /* margin-top: 20%; */
+    padding-top: 5%;
+    text-align: center;
+    height: 30px;
+}
+i {
+    padding-top: -10%;
+}
+.material-icons:hover,
+.material-icons:focus {
+    color: gray;
+}
+.btn {
+    border: 0;
+}

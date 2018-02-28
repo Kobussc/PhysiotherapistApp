@@ -94,18 +94,12 @@ getCopyOfOptions(): IMyOptions {
   }
 
   pickDate(event: IMyDateModel) {
-    const today = new Date();
-    const clicked = event.date;
-    // if (clicked.toDateString() < today.toDateString()) {
-
-    // }
     this.clearButtons();
     this.calendarForm.patchValue({myTime: null});
     this.dateFormatted = event.formatted;
     this.calendarForm.patchValue({myDate: this.dateFormatted});
     const datePicked = this.calendarForm.get('myDate').value;
     let dateTrue = false;
-    let timeGet = '';
 
     const z = this.calendarService.getData();
     z.snapshotChanges().subscribe(item => {
@@ -122,8 +116,7 @@ getCopyOfOptions(): IMyOptions {
               }
               if (dateTrue === true) {
                 if (val === 'myTime') {
-                  timeGet = u[val];
-                  (<HTMLInputElement> document.getElementById(timeGet)).disabled = true;
+                  (<HTMLInputElement> document.getElementById(u[val])).disabled = true;
                   dateTrue = false;
                 }
               }

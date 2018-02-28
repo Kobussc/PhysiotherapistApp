@@ -18,10 +18,14 @@ export class AdminPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const user = firebase.auth().currentUser;
-    if (user) {
-    } else {
-      this.router.navigate(['/login']);
-    }
+    const router = this.router;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+      } else {
+        // No user is signed in.
+        router.navigate(['/login']);
+      }
+    });
   }
 }
