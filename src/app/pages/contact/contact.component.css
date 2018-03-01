@@ -7,18 +7,13 @@
     -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
     -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
     box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
-}
-.btn {
-    background-color: #427A82;
-    color: white;
-}
-.btn:focus,
-.btn:hover {
-    background-color: #69969C;
+    width:70%;
+    margin-left: 15%;
 }
 .btn-block {
     width: 83%;
     background-color: #4DB6AC;
+    color: white;
 }
 .btn-block:hover,
 .btn-block:focus {
@@ -30,4 +25,104 @@ textarea {
 iframe {
     width: 100%;
     height: 500px;
+    -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    border: 0;
+}
+h1 {
+    color: #427A82;
+    border-bottom: 2px solid #427A82;
+    width: 100%;
+    /* margin-left: 10%; */
+    font-size: 48px;
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+h2 {
+    font-family: 'Lato', sans-serif;
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    margin-left: 19%;
+    margin-top: 1%;
+}
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+p {
+    font-family: 'Lato', sans-serif;
+}
+label {
+    font-family: 'Lato', sans-serif;
+}
+b {
+    color: #427A82;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    vertical-align: middle;
+    font-size: 20px;
+}
+.fa {
+    margin-left: 20%;
+    font-size: 48px;
+    color: black;
+}
+.fa:focus,
+.fa:hover {
+    margin-left: 20%;
+    font-size: 48px;
+    color: grey;
+}
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+.col-1 {
+    margin-left: 6%;
+}
+.media1 {
+    background-color: white;
+    color: white;
+}
+.media2 {
+    /* margin-left: 23%; */
+    position: relative;
+    left: 12%;
+}
+.col-md-auto {
+    margin-left: 30%;
+}
+.material-icons {
+    color: black;
+}
+.col-xs-12 {
+    margin-left: 10%;
+}
+.register {
+    margin-left: 63%;
+    border-radius: 0;
+}
+.btn-outline-info:focus,
+.btn-outline-info:hover { 
+    background-color: #427A82;
+}
+.rejestr {
+    margin-left: 33%;
+}
+.phone {
+    margin-left: 47%;
+    color: #427A82;
+    font-weight: bold;
+}
+.mediaa {
+    margin-left: 47%;
 }

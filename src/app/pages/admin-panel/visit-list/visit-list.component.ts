@@ -4,7 +4,6 @@ import { CalendarService } from './../../registration/calendar/calendar.service'
 import { Person } from './../../registration/personal/person.model';
 import { PersonService } from './../../registration/personal/person.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-visit-list',
@@ -21,12 +20,10 @@ export class VisitListComponent implements OnInit {
   constructor(
     private calendarService: CalendarService,
     private personService: PersonService,
-    private toastr: ToastrService,
-    private router: Router
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
-    const today = new Date();
     const x = this.personService.getData();
     x.snapshotChanges().subscribe(item => {
       this.personList = [];
@@ -40,7 +37,6 @@ export class VisitListComponent implements OnInit {
     const z = this.calendarService.getData();
     z.snapshotChanges().subscribe(item => {
       this.calendarList = [];
-      let personID = '';
       item.forEach(element => {
         const b = element.payload.toJSON();
         b['$key'] = element.key;
@@ -48,8 +44,7 @@ export class VisitListComponent implements OnInit {
         Object.getOwnPropertyNames(b).forEach(
           function (val, idx, arra) {
             if (val === 'personId') {
-              personID = b[val];
-              b['personID'] = personID;
+              b['personID'] = b[val];
             }
             if (val === 'myDate') {
               const date = b[val];
@@ -61,14 +56,10 @@ export class VisitListComponent implements OnInit {
   }
 
   onDelete(key: string, key1: string) {
-    const personID = '';
-    const calendarService = this.calendarService;
-    const toastr = this.toastr;
-    const personService = this.personService;
     if (confirm('Czy na pewno usunąć tą rezerwacje?') === true) {
-      calendarService.deleteDay(key);
-      personService.deletePerson(key1);
-      toastr.warning('Usunieto wizyte', 'Rejestr rezerwacji');
+      this.calendarService.deleteDay(key);
+      this.personService.deletePerson(key1);
+      this.toastr.warning('Usunieto wizyte', 'Rejestr rezerwacji');
     }
   }
 

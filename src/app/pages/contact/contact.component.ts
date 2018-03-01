@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+
+import { Contact } from './contact.model';
+import { ContactService } from './contact.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -10,8 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
+  selectedContact: Contact = new Contact();
 
   constructor(
+    private contactService: ContactService,
     private fb: FormBuilder,
     private toastr: ToastrService
   ) { }
@@ -47,6 +52,9 @@ export class ContactComponent implements OnInit {
     if (!this.contactForm.valid) {
       this.toastr.warning('Prosze wypełnić wszystkie pola');
     } else {
+      this.toastr.success('Pomyślnie dodano dane osobowe.');
+      this.contactService.insertContact(this.contactForm.value);
+      this.buildForm();
     }
   }
 

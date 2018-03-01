@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact.component';
+import { ContactService } from './contact.service';
 
 const appRouter: Routes = [
   {
@@ -24,7 +25,7 @@ const appRouter: Routes = [
     RouterModule
   ],
   providers: [
-    // ContactService
+    ContactService
   ]
 })
 export class ContactModule { }
