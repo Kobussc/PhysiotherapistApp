@@ -6,4 +6,6 @@ export class Person {
     pesel: string;
     phone: string;
     surname: string;
+    myDate: Date;
+    myTime: number;
 }

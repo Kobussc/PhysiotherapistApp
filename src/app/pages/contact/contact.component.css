@@ -96,7 +96,7 @@ span {
 .media2 {
     /* margin-left: 23%; */
     position: relative;
-    left: 12%;
+    left: 18%;
 }
 .col-md-auto {
     margin-left: 30%;
@@ -108,18 +108,25 @@ span {
     margin-left: 10%;
 }
 .register {
-    margin-left: 63%;
+    position: relative;
+    margin-left: 75%;
     border-radius: 0;
+}
+.online {
+    position: relative;
+    left: 13%;
 }
 .btn-outline-info:focus,
 .btn-outline-info:hover { 
     background-color: #427A82;
 }
 .rejestr {
-    margin-left: 33%;
+    position: relative;
+    left: 29%;
 }
 .phone {
-    margin-left: 47%;
+    position: relative;
+    left: 40%;
     color: #427A82;
     font-weight: bold;
 }

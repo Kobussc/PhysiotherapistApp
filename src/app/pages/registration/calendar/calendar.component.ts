@@ -1,11 +1,11 @@
+import { PersonService } from './../personal/person.service';
+import { Person } from './../personal/person.model';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { IMyDpOptions, IMyDateModel, IMyInputFieldChanged, IMyOptions } from 'mydatepicker';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Calendar } from './calendar.model';
-import { CalendarService } from './calendar.service';
 import { IMyLocales } from 'mydatepicker/dist/interfaces';
 import { ToastrService } from 'ngx-toastr';
 import { Response } from '@angular/http';
@@ -15,17 +15,14 @@ import { Response } from '@angular/http';
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
-  providers: [CalendarService]
+  providers: [PersonService]
 })
 export class CalendarComponent implements OnInit {
 
   dateFormatted: string;
-  sliced: string;
-  calendarId: string;
+  personID: string;
   calendarForm: FormGroup;
-  calendarList: Calendar[];
-  cList: AngularFireList<any>;
-  selectedDay: Calendar = new Calendar();
+  personList: Person[];
 
   public MyDatePickerOptions: IMyDpOptions = {
     firstDayOfWeek: 'mo',
@@ -41,21 +38,58 @@ export class CalendarComponent implements OnInit {
     private firebase: AngularFireDatabase,
     private fb: FormBuilder,
     private router: Router,
-    private calendarService: CalendarService,
+    private personService: PersonService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit() {
     this.disableUntil();
     const id = window.location.href;
-    this.sliced = id.slice(47, 70);
+    this.personID = id.slice(47, 70);
 
     this.calendarForm = this.fb.group({
+      $key: [''],
+      // dateOfBirth: ['', Validators.required],
+      // email: ['', Validators.required],
+      // name: ['', Validators.required],
+      // pesel: ['', Validators.required],
+      // phone: ['', Validators.required],
+      // surname: ['', Validators.required],
       myDate: [null, Validators.required],
-      myTime: [null, Validators.required],
-      personId: ['']
+      myTime: [null, Validators.required]
     });
     this.blockButtons();
+
+    const x = this.personService.getData();
+    x.snapshotChanges().subscribe(item => {
+      item.forEach(element => {
+        const calendarForm = this.calendarForm;
+        this.personList = [];
+        const y = element.payload.toJSON();
+        y['$key'] = element.key;
+        if (this.personID === y['$key']) {
+          this.calendarForm.patchValue({$key: this.personID});
+          this.personList.push(y as Person);
+        // Object.getOwnPropertyNames(y).forEach(
+        //   function (val, idx, arra) {
+        //     if (val === 'name') {
+        //       calendarForm.patchValue({name: y[val]});
+        //     } else if (val === 'surname') {
+        //       calendarForm.patchValue({surname: y[val]});
+        //     } else if (val === 'dateOfBirth') {
+        //       calendarForm.patchValue({dateOfBirth: y[val]});
+        //     } else if (val === 'email') {
+        //       calendarForm.patchValue({email: y[val]});
+        //     } else if (val === 'phone') {
+        //       calendarForm.patchValue({phone: y[val]});
+        //     } else if (val === 'pesel') {
+        //       calendarForm.patchValue({pesel: y[val]});
+        //     }
+        //   }
+        // );
+      }
+      });
+    });
   }
 
   disableUntil() {
@@ -98,15 +132,15 @@ getCopyOfOptions(): IMyOptions {
     this.calendarForm.patchValue({myTime: null});
     this.dateFormatted = event.formatted;
     this.calendarForm.patchValue({myDate: this.dateFormatted});
-    const datePicked = this.calendarForm.get('myDate').value;
+    const datePicked = this.dateFormatted;
     let dateTrue = false;
 
-    const z = this.calendarService.getData();
+    const z = this.personService.getData();
     z.snapshotChanges().subscribe(item => {
-      this.calendarList = [];
+      this.personList = [];
       item.forEach(element => {
         const u = element.payload.toJSON();
-          this.calendarList.push(u as Calendar);
+          this.personList.push(u as Person);
           Object.getOwnPropertyNames(u).forEach(
             function(val, idx, arra) {
               if (val === 'myDate') {
@@ -142,18 +176,16 @@ getCopyOfOptions(): IMyOptions {
     }
   }
 
-  save(calendar: Calendar) {
-    this.calendarForm.patchValue({personId: this.sliced});
+  save() {
     this.calendarForm.patchValue({myDate: this.dateFormatted});
+
     this.markAsTouched(this.calendarForm);
       if (!this.calendarForm.valid) {
         this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
       } else {
         this.toastr.success('Wybrano date wizyty oraz godzine.');
-        this.cList = this.firebase.list('calendars');
-        const newPostRef = this.cList.push(this.calendarForm.value);
-        const postId = newPostRef.key;
-        this.router.navigate([`/registration/summary`, {id: postId}]);
+        this.personService.updatePerson(this.calendarForm.value);
+        this.router.navigate([`/registration/summary`, {id: this.personID}]);
       }
   }
 }

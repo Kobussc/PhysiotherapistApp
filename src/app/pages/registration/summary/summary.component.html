@@ -25,10 +25,8 @@
             Dziekujemy za rezerwacje wizyty! Pani/Panie
             <b>{{person.name}} {{person.surname}}</b> wizyta została zapisana. Na podany email:
             <b>{{person.email}}</b> została wysłana wiadomość potwierdzająca, wraz z data i godzina.
+            Wizyta została zaplanowana na<br><b>{{person.myDate}}</b> o godzinie <b>{{person.myTime}}</b>.<br> W wypadku zmiany daty lub godziny prosimy o kontakt telefoniczny.
           </tr>
-          <p *ngFor="let calendar of calendarList">
-            Wizyta została zaplanowana na <b>{{calendar.myDate}}</b> o godzinie <b>{{calendar.myTime}}</b>.<br> W wypadku zmiany daty lub godziny prosimy o kontakt telefoniczny.
-          </p>
         </table>
       </div>
     </div>
