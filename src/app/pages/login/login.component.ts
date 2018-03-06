@@ -65,6 +65,8 @@ export class LoginComponent implements OnInit {
     if (user) {
       router.navigate(['/admin-panel']);
       pages.showLogout();
+      location.reload();
+      toastr.success('Zalogowano');
     } else {
     }
   });

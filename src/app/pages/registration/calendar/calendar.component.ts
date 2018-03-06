@@ -49,12 +49,6 @@ export class CalendarComponent implements OnInit {
 
     this.calendarForm = this.fb.group({
       $key: [''],
-      // dateOfBirth: ['', Validators.required],
-      // email: ['', Validators.required],
-      // name: ['', Validators.required],
-      // pesel: ['', Validators.required],
-      // phone: ['', Validators.required],
-      // surname: ['', Validators.required],
       myDate: [null, Validators.required],
       myTime: [null, Validators.required]
     });
@@ -70,23 +64,6 @@ export class CalendarComponent implements OnInit {
         if (this.personID === y['$key']) {
           this.calendarForm.patchValue({$key: this.personID});
           this.personList.push(y as Person);
-        // Object.getOwnPropertyNames(y).forEach(
-        //   function (val, idx, arra) {
-        //     if (val === 'name') {
-        //       calendarForm.patchValue({name: y[val]});
-        //     } else if (val === 'surname') {
-        //       calendarForm.patchValue({surname: y[val]});
-        //     } else if (val === 'dateOfBirth') {
-        //       calendarForm.patchValue({dateOfBirth: y[val]});
-        //     } else if (val === 'email') {
-        //       calendarForm.patchValue({email: y[val]});
-        //     } else if (val === 'phone') {
-        //       calendarForm.patchValue({phone: y[val]});
-        //     } else if (val === 'pesel') {
-        //       calendarForm.patchValue({pesel: y[val]});
-        //     }
-        //   }
-        // );
       }
       });
     });

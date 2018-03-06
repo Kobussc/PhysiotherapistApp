@@ -38,6 +38,7 @@ export class PagesComponent implements OnInit {
       toastr.warning(error);
     });
     router.navigate(['/home']);
+    location.reload();
     document.getElementById('logout').style.display = 'none';
     document.getElementById('admin').style.display = 'none';
     document.getElementById('login').style.display = 'block';

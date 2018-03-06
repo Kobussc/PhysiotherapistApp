@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRouter: Routes = [
   {
@@ -40,7 +41,8 @@ const appRouter: Routes = [
       {
         path: 'registration',
         loadChildren: './registration/registration.module#RegistrationModule'
-      }
+      },
+      { path: '**', component: PageNotFoundComponent }
     ]
   }
 ];
@@ -51,7 +53,8 @@ const appRouter: Routes = [
     RouterModule.forChild(appRouter)
   ],
   declarations: [
-    PagesComponent
+    PagesComponent,
+    PageNotFoundComponent
   ],
   exports: [
     RouterModule

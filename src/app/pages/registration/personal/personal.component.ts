@@ -90,14 +90,14 @@ export class PersonalComponent implements OnInit {
 
   save(person: Person) {
     this.markAsTouched(this.registrationForm);
-      if (!this.registrationForm.valid) {
-        this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
-      } else {
-        this.toastr.success('Pomyślnie dodano dane osobowe.');
-        this.personList = this.firebase.list('persons');
-        const newPostRef = this.personList.push(this.registrationForm.value);
-        const postId = newPostRef.key;
-        this.router.navigate([`/registration/calendar`, {id: postId}]);
-      }
+    if (!this.registrationForm.valid) {
+      this.toastr.warning('Prosze wypełnić wszystkie wymagane pola');
+    } else {
+      this.toastr.success('Pomyślnie dodano dane osobowe.');
+      this.personList = this.firebase.list('persons');
+      const newPostRef = this.personList.push(this.registrationForm.value);
+      const postId = newPostRef.key;
+      this.router.navigate([`/registration/calendar`, {id: postId}]);
+    }
   }
 }
