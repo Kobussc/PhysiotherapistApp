@@ -12,6 +12,7 @@ export class SummaryComponent implements OnInit {
 
   personId: string;
   personList: Person[];
+
   constructor(
     private personService: PersonService
   ) { }

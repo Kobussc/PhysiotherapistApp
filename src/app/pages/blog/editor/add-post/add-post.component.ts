@@ -54,6 +54,7 @@ export class AddPostComponent implements OnInit {
     } else {
       this.toastr.success('Pomyślnie dodano post');
       this.editorService.insertPost(this.addPostForm.value);
+      this.buildForm();
     }
     }
   }

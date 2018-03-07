@@ -31,10 +31,7 @@ iframe {
     border: 0;
 }
 h1 {
-    color: #427A82;
-    border-bottom: 2px solid #427A82;
     width: 100%;
-    /* margin-left: 10%; */
     font-size: 48px;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
@@ -94,7 +91,6 @@ span {
     color: white;
 }
 .media2 {
-    /* margin-left: 23%; */
     position: relative;
     left: 18%;
 }
@@ -132,4 +128,17 @@ span {
 }
 .mediaa {
     margin-left: 47%;
+}
+.jumbotron{
+    margin-top: -25px;
+    padding:15px !important;
+    text-align:center;
+}
+.road {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: -5px;
+}
+.msg {
+    margin-bottom: -1%;
 }

@@ -24,7 +24,7 @@ export class EditorService {
     });
   }
 
-  deletepost($key: string) {
+  deletePost($key: string) {
     this.postList.remove($key);
   }
 

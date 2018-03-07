@@ -20,6 +20,10 @@ export const appRouter: Routes = [
         component: AddPostComponent
       },
       {
+        path: 'editPost',
+        component: EditPostComponent
+      },
+      {
         path: 'editPost/:id',
         component: EditPostComponent
       },

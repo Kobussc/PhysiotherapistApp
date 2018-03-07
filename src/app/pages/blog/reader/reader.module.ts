@@ -5,16 +5,21 @@ import { CommonModule } from '@angular/common';
 // import { ReaderComponent } from './reader.component';
 import { ReaderListComponent } from './reader-list/reader-list.component';
 import { ReaderPostComponent } from './reader-post/reader-post.component';
+import { ReaderComponent } from './reader.component';
 
 export const appRouter: Routes = [
   {
-    path: 'readerList',
-    component: ReaderListComponent,
+    path: '',
+    component: ReaderComponent,
     children: [
-      // {
-      //   path: 'readerList',
-      //   component: ReaderListComponent
-      // },
+      {
+        path: 'readerList',
+        component: ReaderListComponent
+      },
+      {
+        path: 'readerPost',
+        component: ReaderPostComponent
+      },
       {
         path: 'readerPost/:id',
         component: ReaderPostComponent
@@ -29,7 +34,7 @@ export const appRouter: Routes = [
     RouterModule.forChild(appRouter)
   ],
   declarations: [
-    // ReaderComponent,
+    ReaderComponent,
     ReaderListComponent,
     ReaderPostComponent
   ],

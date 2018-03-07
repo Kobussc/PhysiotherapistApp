@@ -1,23 +1,26 @@
-<div class="card">
-  <!-- <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting
-        in this post's contents.</p>
-      <p class="lead mb-0">
-        <a href="#" class="text-white font-weight-bold">Continue reading...</a>
-      </p>
-    </div>
-  </div> -->
-  <br>
-  <ng-container *ngFor="let post of postList">
-    <div class="row">
-      <div class="card">
-        <p>{{post.name}}</p>
-        <h1>{{post.title}}</h1>
-        <p>{{post.textArea}}</p>
+<br>
+<div class="posts">
+  <div class="card-deck">
+    <div class="card" *ngFor="let post of postList">
+      <a (click)="editPost(post.$key)">
+        <img class="card-img-top" src="./assets/image/photo1.jpeg" alt="Card image cap">
+      </a>
+      <div class="card-body">
+        <a (click)="editPost(post.$key)" class="card-link">
+          <h5 class="card-title">{{post.title}}</h5>
+        </a>
+        <p class="card-text">{{post.textArea}}</p>
+        <footer class="blockquote-footer">
+          <small class="text-muted">{{post.name}}
+          </small>
+        </footer>
+        <a class="btn center" (click)="onDelete(post.$key)">
+          <b>usuń ten artykuł</b>
+          <i class="material-icons md-36">delete_forever</i>
+        </a>
       </div>
     </div>
-  </ng-container>
+  </div>
+  <br>
 </div>
 <br>

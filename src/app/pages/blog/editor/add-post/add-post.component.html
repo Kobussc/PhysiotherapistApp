@@ -34,7 +34,7 @@
           <div class="col">
             <div class="form-sm mt-4">
               <label for="textArea">Treść artykułu</label>
-              <textarea class="form-control" id="textArea" formControlName="textArea" placeholder="Treść artykułu"
+              <textarea cols='60' rows='8' class="form-control" id="textArea" formControlName="textArea" placeholder="Treść artykułu"
                 rows="3"></textarea>
               <div *ngIf="addPostForm.get('textArea').hasError('required') && addPostForm.controls.textArea.touched" class="text-danger">To pole jest wymagane.</div>
             </div>
