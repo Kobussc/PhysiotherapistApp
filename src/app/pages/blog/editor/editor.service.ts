@@ -24,6 +24,14 @@ export class EditorService {
     });
   }
 
+  updatePost(post: Post) {
+    this.postList.update(post.$key, {
+      name: post.name,
+      textArea: post.textArea,
+      title: post.title
+    });
+  }
+
   deletePost($key: string) {
     this.postList.remove($key);
   }

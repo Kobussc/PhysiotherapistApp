@@ -1,4 +1,4 @@
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EditorService } from './../editor.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,17 +21,7 @@ export class ListComponent implements OnInit {
     private editorService: EditorService,
     private toastr: ToastrService,
     private router: Router
-  ) {
-    router.events.subscribe(s => {
-      if (s instanceof NavigationEnd) {
-        const tree = router.parseUrl(router.url);
-        if (tree.fragment) {
-          const element = document.querySelector('#' + tree.fragment);
-          if (element) { element.scrollIntoView(true); }
-        }
-      }
-    });
-  }
+  ) { }
 
   ngOnInit() {
     const data = this.data;

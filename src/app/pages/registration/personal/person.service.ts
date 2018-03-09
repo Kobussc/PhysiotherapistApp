@@ -32,12 +32,6 @@ export class PersonService {
   updatePerson(person: Person) {
     this.personList.update(person.$key,
       {
-        // dateOfBirth: person.dateOfBirth,
-        // email: person.email,
-        // name: person.name,
-        // pesel: person.pesel,
-        // phone: person.phone,
-        // surname: person.surname,
         myDate: person.myDate,
         myTime: person.myTime
       }

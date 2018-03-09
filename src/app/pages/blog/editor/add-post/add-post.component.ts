@@ -14,7 +14,6 @@ import { Post } from '../editor.model';
 export class AddPostComponent implements OnInit {
 
   addPostForm: FormGroup;
-  selectedPost: Post = new Post();
 
   constructor(
     private editorService: EditorService,

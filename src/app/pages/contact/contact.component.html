@@ -3,7 +3,7 @@
 <br>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>KONTAKT</h1>
+    <h1 class="contact">KONTAKT</h1>
     <!-- <p class="lead">Poniżej zostały wyświetlone wszystkie artykuły.</p> -->
   </div>
 </div>
@@ -89,8 +89,7 @@
 <br>
 <div class="jumbotron jumbotron-fluid msg">
   <div class="container">
-    <h1>NAPISZ DO NAS!</h1>
-
+    <h1 class="sendMsg">NAPISZ DO NAS!</h1>
     <br>
     <div class="card">
       <div class="card-header text-center">
@@ -99,7 +98,7 @@
           <p>Prosze wypełnić dane osobowe.</p>
         </div>
       </div>
-      <div class="card-block justify-content-center">
+      <div class="card-block">
         <form [formGroup]="contactForm" (ngSubmit)="save()">
           <div class="row">
             <div class="col-md-5">

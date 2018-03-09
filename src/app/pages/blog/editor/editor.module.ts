@@ -39,7 +39,8 @@ export const appRouter: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(appRouter)
+    RouterModule.forChild(appRouter),
+    ReactiveFormsModule
   ],
   declarations: [
     EditorComponent,

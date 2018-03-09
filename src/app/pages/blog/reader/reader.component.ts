@@ -13,12 +13,11 @@ export class ReaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const router = this.router;
     const ziom = firebase.auth().currentUser;
     if (ziom) {
-      router.navigate(['/blog/editor']);
+      this.router.navigate(['/blog/editor']);
     } else {
-      router.navigate(['blog/reader/readerList']);
+      this.router.navigate(['/blog/reader/readerList']);
     }
   }
 

@@ -132,7 +132,6 @@ span {
 .jumbotron{
     margin-top: -25px;
     padding:15px !important;
-    text-align:center;
 }
 .road {
     margin-top: 0;
@@ -141,4 +140,13 @@ span {
 }
 .msg {
     margin-bottom: -1%;
+}
+label {
+    text-align: left;
+}
+.contact {
+    margin-left: 40%;
+}
+.sendMsg {
+    margin-left: 33%;
 }
