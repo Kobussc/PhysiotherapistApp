@@ -1,5 +1,64 @@
 .carousel-inner{
     width:100%;
-    max-height: 1200px !important;
+    max-height: 700px !important;
   }
-  
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+.carousel {
+  margin-top: -2rem;
+  margin-bottom: 4rem;
+}
+.carousel-caption {
+  bottom: 1rem;
+  z-index: 10;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+.animate {
+  animation-name: example;
+  animation-duration: 20s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  position: relative;
+}
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+@-webkit-keyframes example {
+  0%   {left:500px; top:0px;}
+  25%  {left:0px; top:0px;}
+  /* 50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;} */ 
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {left:500px; top:0px;}
+   25%  {left:0px; top:0px;}
+  /* 50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;} */
+}

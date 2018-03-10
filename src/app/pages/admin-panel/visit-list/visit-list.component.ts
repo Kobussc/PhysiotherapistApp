@@ -26,6 +26,12 @@ export class VisitListComponent implements OnInit {
       item.forEach(element => {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
+        // Object.getOwnPropertyNames(y).forEach(
+        //   function (val, idx, arra) {
+        //     if (val === 'myDate') {
+        //     }
+        //   }
+        // );
         this.personList.push(y as Person);
       });
     });
