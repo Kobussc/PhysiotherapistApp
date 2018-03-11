@@ -1,0 +1,13 @@
+td,th {
+    vertical-align: middle;
+}
+i {
+    vertical-align: middle;
+}
+.material-icons:hover,
+.material-icons:focus {
+    color: gray;
+}
+.btn {
+    border: 0;
+}

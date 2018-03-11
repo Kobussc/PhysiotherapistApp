@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col">
+    <table class="table table-sm table-hover">
+      <tr class="text-center">
+        <th>Dane osoby</th>
+        <th>Treść wiadomości</th>
+        <th>
+          <a class="btn">
+            <i class="material-icons md-36">keyboard_arrow_down</i>
+          </a>
+        </th>
+      </tr>
+      <tr class="text-left" *ngFor="let contact of contactList">
+        <td><b>Imie: </b>{{contact.name}}<br>
+          <b>Nazwisko: </b>{{contact.surname}}<br>
+          <b>Telefon: </b>{{contact.phone}}<br>
+          <b>Email: </b>{{contact.email}}</td>
+        <td class="text-center">{{contact.textArea}}</td>
+        <td>
+          <a class="btn" (click)="onDelete(contact.$key)">
+            <i class="material-icons md-36">delete_forever</i>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

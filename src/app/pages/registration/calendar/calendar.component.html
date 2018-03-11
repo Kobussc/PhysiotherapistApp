@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header text-center">
+    <div class="text-center">
+      <br>
+      <h3>Rejestracja wizyty</h3>
+      <p>Prosze wybrać odpowiadający termin oraz godzine.</p>
+      <div class="col-md-auto">
+        <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/personal']" aria-pressed="true">
+          <i class="material-icons">person</i>
+        </a>
+        <a class="btn btn-lg active" [routerLinkActive]="['active']" [routerLink]="['/registration/calendar']" aria-pressed="true">
+          <i class="material-icons">today</i>
+        </a>
+        <a class="btn btn-lg active disabled" [routerLinkActive]="['active']" [routerLink]="['/registration/summary']" aria-pressed="true">
+          <i class="material-icons">description</i>
+        </a>
+      </div>
+    </div><br>
+  </div>
+  <div class="card-block justify-content-center">
+    <form [formGroup]="calendarForm" (ngSubmit)="save()" novalidate>
+      <div class="row">
+        <div class="col">
+          <br><br>
+          <my-date-picker name="mydate" [options]="MyDatePickerOptions" (dateChanged)="pickDate($event)" formControlName="myDate"></my-date-picker>
+        </div>
+        <div class="col"><br>
+          <div class="btn-group-vertical btn-block">
+            <button type="button" class="btn" (click)="pickTime('8:00')" id = "8:00" value="8:00"> 8:00 - 9:00</button>
+            <button type="button" class="btn" (click)="pickTime('9:00')" id = "9:00" value="9:00"> 9:00 - 10:00</button>
+            <button type="button" class="btn" (click)="pickTime('10:00')" id = "10:00" value="10:00">10:00 - 11:00</button>
+            <button type="button" class="btn" (click)="pickTime('11:00')" id = "11:00" value="11:00">11:00 - 12:00</button>
+            <button type="button" class="btn" (click)="pickTime('12:00')" id = "12:00" value="12:00">12:00 - 13:00</button>
+            <button type="button" class="btn" (click)="pickTime('13:00')" id = "13:00" value="13:00">13:00 - 14:00</button>
+            <button type="button" class="btn" (click)="pickTime('14:00')" id = "14:00" value="14:00">14:00 - 15:00</button>
+            <button type="button" class="btn" (click)="pickTime('15:00')" id = "15:00" value="15:00">15:00 - 16:00</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <br>
+          <button class="btn btn-block">Dalej</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>

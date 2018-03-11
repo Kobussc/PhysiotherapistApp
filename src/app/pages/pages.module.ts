@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesComponent } from './pages.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRouter: Routes = [
   {
@@ -12,6 +13,10 @@ const appRouter: Routes = [
       {
         path: 'about-me',
         loadChildren: './about-me/about-me.module#AboutMeModule'
+      },
+      {
+        path: 'admin-panel',
+        loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'
       },
       {
         path: 'blog',
@@ -26,13 +31,18 @@ const appRouter: Routes = [
         loadChildren: './home/home.module#HomeModule'
       },
       {
+        path: 'login',
+        loadChildren: './login/login.module#LoginModule'
+      },
+      {
         path: 'services',
         loadChildren: './services/services.module#ServicesModule'
       },
       {
         path: 'registration',
         loadChildren: './registration/registration.module#RegistrationModule'
-      }
+      },
+      { path: '**', component: PageNotFoundComponent }
     ]
   }
 ];
@@ -43,7 +53,8 @@ const appRouter: Routes = [
     RouterModule.forChild(appRouter)
   ],
   declarations: [
-    PagesComponent
+    PagesComponent,
+    PageNotFoundComponent
   ],
   exports: [
     RouterModule

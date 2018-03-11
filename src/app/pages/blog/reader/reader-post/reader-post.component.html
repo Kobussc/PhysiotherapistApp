@@ -1,0 +1,22 @@
+<div *ngFor="let post of postList">
+  <img class="card-img-top" src="./assets/image/photo1.jpeg" alt="Card image cap">
+  <div class="title">
+    <h1>{{post.title}}</h1>
+  </div>
+  <div class="card text">
+    <p>{{post.textArea}}</p>
+  </div>
+</div>
+<br>
+<!-- <div class="jumbotron">
+  <div class="container">
+    <a href="/blog/reader/readerList">WRÓĆ</a>
+  </div>
+</div> -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <a (click)="goToList()">
+      <h1>Powrót do listy</h1>
+    </a>
+  </div>
+</div>

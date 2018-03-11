@@ -1,0 +1,24 @@
+.card {
+    -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+}
+.posts {
+    margin-left: 12%;
+    margin-right: 6%;
+}
+b {
+    vertical-align: top;
+}
+.card-text {
+    white-space: pre-line
+}
+@media (min-width:768px) {
+    .card-deck > .card
+    {
+        width: 29%;
+        flex-wrap: wrap;
+        flex: initial;
+        margin-block-start: 2%;
+    }
+}

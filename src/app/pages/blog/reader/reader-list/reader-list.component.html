@@ -1,0 +1,29 @@
+<!-- <div class="row"> -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>ARTYKUŁY NA BLOGU</h1>
+      <p class="lead">Poniżej zostały wyświetlone wszystkie artykuły, kliknij dany artykuł aby zobaczyć szczegóły.</p>
+    </div>
+  </div>
+<!-- </div> -->
+<div class="posts">
+  <div class="card-deck">
+    <div class="card" *ngFor="let post of postList">
+      <a (click)="showPost(post.$key)">
+        <img class="card-img-top" src="./assets/image/photo1.jpeg" alt="Card image cap">
+      </a>
+      <div class="card-body">
+        <a (click)="showPost(post.$key)" class="card-link">
+          <h5 class="card-title">{{post.title}}</h5>
+        </a>
+        <p class="card-text">{{post.textArea}}</p>
+        <footer class="blockquote-footer">
+          <small class="text-muted">{{post.name}}
+          </small>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<br>

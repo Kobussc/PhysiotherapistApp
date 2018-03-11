@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header text-center">
+      <div class="text-center">
+        <h2>Dodawanie artykułu</h2>
+        <!-- <p></p> -->
+      </div>
+    </div>
+    <div class="card-block justify-content-center">
+      <form [formGroup]="addPostForm" (ngSubmit)="save()">
+        <div class="row">
+          <div class="col-md-5">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-sm mt-4">
+              <label for="name">Tytuł artykułu
+                <small class="text-danger">*</small>
+              </label>
+              <input type="text" class="form-control" id="title" formControlName="title" placeholder="Tytuł">
+              <div *ngIf="addPostForm.get('title').hasError('required') && addPostForm.controls.title.touched" class="text-danger">Tytuł jest wymagany.</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-sm mt-4">
+              <label for="name">Autor
+              </label>
+              <input type="text" class="form-control" id="surname" formControlName="name" placeholder="Twoje imie">
+              <div *ngIf="addPostForm.get('name').hasError('required') && addPostForm.controls.name.touched" class="text-danger">Autor jest wymagany.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-sm mt-4">
+              <label for="textArea">Treść artykułu</label>
+              <textarea cols='60' rows='8' class="form-control" id="textArea" formControlName="textArea" placeholder="Treść artykułu"
+                rows="3"></textarea>
+              <div *ngIf="addPostForm.get('textArea').hasError('required') && addPostForm.controls.textArea.touched" class="text-danger">To pole jest wymagane.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <br>
+            <button class="btn btn-block">Dodaj</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><br><br>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <a>
+        <h1>Lista artykułów</h1>
+      </a>
+    </div>
+  </div>
+  <app-list></app-list>

@@ -1,0 +1,25 @@
+<div class="posts">
+  <div class="card-deck">
+    <div class="card" *ngFor="let post of postList">
+      <a (click)="editPost(post.$key)">
+        <img class="card-img-top" src="./assets/image/photo1.jpeg" alt="Card image cap">
+      </a>
+      <div class="card-body">
+        <a (click)="editPost(post.$key)" class="card-link">
+          <h5 class="card-title">{{post.title}}</h5>
+        </a>
+        <p class="card-text">{{post.textArea}}</p>
+        <footer class="blockquote-footer">
+          <small class="text-muted">{{post.name}}
+          </small>
+        </footer>
+        <a class="btn center" (click)="onDelete(post.$key)">
+          <b>usuń ten artykuł</b>
+          <i class="material-icons md-36">delete_forever</i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<br>

@@ -1,3 +1,48 @@
-<p>
-  services works!
-</p>
+<div class="container marketing">
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 slideDown" [@flyInOut]="down">
+      <h2 class="featurette-heading">KONTUZJA?
+        <span class="text-muted">Z naszą pomocą szybko ją pokonasz!</span>
+      </h2>
+      <p class="lead">Specjalizujemy sie w rehabilitacji sportowców, dlatego większość możliwych kontuzji nie jest nam obca. Postaramy się
+        jak najszybciej pomóc, aby można było wrócić do swojego ulubionego sportu.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto slideIn adjust2" src="./assets/image/433H.jpg" alt="Generic placeholder image"
+        [@flyInOut]="in">
+    </div>
+  </div>
+  <hr class="featurette-divider" id="services">
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2 slideDown" [@flyInOut]="down1">
+      <h2 class="featurette-heading">NIE TYLKO SPORT.
+        <span class="text-muted">Oczywiście leczymy nie tylko sportowców.</span>
+      </h2>
+      <p class="lead">Mamy specjalistów rehabilitacji wielu płaszczyzn. Zajmujemy się rehabilitacją geriatryczną, również z dojazdem do domu
+        pacjenta.
+      </p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img class="featurette-image img-fluid mx-auto slideIn2 adjust2" src="./assets/image/oldMan.jpg" alt="Generic placeholder image"
+        [@flyInOut]="in2">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette">
+    <div class="col-md-7 slideDown" [@flyInOut]="down2">
+      <h2 class="featurette-heading">DZIECI.
+        <span class="text-muted">Ich zdrowie jest najważniejsze.</span>
+      </h2>
+      <p class="lead">Dlatego oferujemy państwu specjalistyczną rehabilitację dzieci oraz niemowląt. Pomagamy w odpowiednim rozwoju Państwa
+        pociech, oraz pomagamy im w dojściu do pełni sił po różnych wypadkach czy kontuzjach.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto adjust2 slideIn" src="./assets/image/kid.jpg" alt="Generic placeholder image"
+        [@flyInOut]="in3">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+</div>

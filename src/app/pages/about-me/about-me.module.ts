@@ -24,7 +24,6 @@ const appRouter: Routes = [
     RouterModule
   ],
   providers: [
-    // ServicesService,
   ]
 })
 export class AboutMeModule { }

@@ -1,0 +1,152 @@
+.card-block {
+    margin-left: 14%;
+    float: none;
+    margin-bottom: 30px;
+}
+.card {
+    -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    width:70%;
+    margin-left: 15%;
+}
+.btn-block {
+    width: 83%;
+    background-color: #4DB6AC;
+    color: white;
+}
+.btn-block:hover,
+.btn-block:focus {
+    background-color: #80CBC4;
+}
+textarea {
+    width: 83%;
+}
+iframe {
+    width: 100%;
+    height: 500px;
+    -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    border: 0;
+}
+h1 {
+    width: 100%;
+    font-size: 48px;
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+h2 {
+    font-family: 'Lato', sans-serif;
+}
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    margin-left: 19%;
+    margin-top: 1%;
+}
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+p {
+    font-family: 'Lato', sans-serif;
+}
+label {
+    font-family: 'Lato', sans-serif;
+}
+b {
+    color: #427A82;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    vertical-align: middle;
+    font-size: 20px;
+}
+.fa {
+    margin-left: 20%;
+    font-size: 48px;
+    color: black;
+}
+.fa:focus,
+.fa:hover {
+    margin-left: 20%;
+    font-size: 48px;
+    color: grey;
+}
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+.col-1 {
+    margin-left: 6%;
+}
+.media1 {
+    background-color: white;
+    color: white;
+}
+.media2 {
+    position: relative;
+    left: 18%;
+}
+.col-md-auto {
+    margin-left: 30%;
+}
+.material-icons {
+    color: black;
+}
+.col-xs-12 {
+    margin-left: 10%;
+}
+.register {
+    position: relative;
+    margin-left: 75%;
+    border-radius: 0;
+}
+.online {
+    position: relative;
+    left: 13%;
+}
+.btn-outline-info:focus,
+.btn-outline-info:hover { 
+    background-color: #427A82;
+}
+.rejestr {
+    position: relative;
+    left: 29%;
+}
+.phone {
+    position: relative;
+    left: 40%;
+    color: #427A82;
+    font-weight: bold;
+}
+.mediaa {
+    margin-left: 47%;
+}
+.jumbotron{
+    margin-top: -25px;
+    padding:15px !important;
+}
+.road {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: -5px;
+}
+.msg {
+    margin-bottom: -1%;
+}
+label {
+    text-align: left;
+}
+.contact {
+    margin-left: 40%;
+}
+.sendMsg {
+    margin-left: 33%;
+}

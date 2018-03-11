@@ -4,19 +4,33 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyDatePickerModule } from 'mydatepicker';
 import { RoutingModule } from './routing.module';
+import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 
+export const firebaseConfig = environment.firebaseConfig;
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    RoutingModule
+    MyDatePickerModule,
+    RoutingModule,
+    ToastrModule.forRoot()
   ],
   providers: [
   ],

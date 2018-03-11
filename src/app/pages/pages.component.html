@@ -1,49 +1,46 @@
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <button type="button" class="btn btn-outline-light" [routerLink]="['/home']">Fizjo</button>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-color: #246068">
+    <form class="form-inline mt-md-0">
+      <button type="button" class="btn btn-outline-light my-sm-1" [routerLink]="['/registration/personal']" id="registration">Rejestracja wizyty</button>
+    </form>
+    <!-- <button type="button" class="btn btn-light" [routerLink]="['/login']">Login</button> -->
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a [routerLink]="['/home']" class="nav-link">Home
+          <a [routerLink]="['/home']" (click)="scroll('home')" class="nav-link">Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/about-me']">O mnie</a>
+          <a class="nav-link" (click)="scroll('aboutMe')">O mnie</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/services']">Usługi</a>
+          <a class="nav-link button" (click)="scroll('services')">Usługi</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/blog']">Blog</a>
+          <a class="nav-link" [routerLink]="['/blog/reader/readerList']">Blog</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['/contact']">Kontakt</a>
         </li>
       </ul>
-      <form class="form-inline mt-md-0">
-        <button type="button" class="btn btn-outline-light my-sm-1" [routerLink]="['/registration']" id="registration">Rejestracja wizyty</button>
-      </form>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="login" [routerLink]="['/login']">Zaloguj</button>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="admin" [routerLink]="['/admin-panel']">Panel admina</button>
+      <button type="button" class="btn btn-outline-light my-sm-1" id="logout" (click)="logout()">Wyloguj</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </nav>
 
-  <main role="main" flex>
-    <div class="ng-view">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+  <main role="main">
           <br>
           <router-outlet></router-outlet>
-        </div>
-      </div>
-    </div>
   </main>
-  <footer class="footer bg-dark">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
+  <footer class="footer">
+    <div class="container">
+      <span style="color: white">Wykorzystano Bootstrap v4.</span>
+    </div>
   </footer>
 </body>
