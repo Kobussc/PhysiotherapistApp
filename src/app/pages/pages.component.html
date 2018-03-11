@@ -7,15 +7,15 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a [routerLink]="['/home']" class="nav-link">Home
+          <a [routerLink]="['/home']" (click)="scroll('home')" class="nav-link">Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/home/about-me']">O mnie</a>
+          <a class="nav-link" (click)="scroll('aboutMe')">O mnie</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/home/services']">Usługi</a>
+          <a class="nav-link button" (click)="scroll('services')">Usługi</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['/blog/reader/readerList']">Blog</a>

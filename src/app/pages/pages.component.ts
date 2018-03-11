@@ -49,5 +49,10 @@ export class PagesComponent implements OnInit {
     document.getElementById('logout').style.display = 'block';
     document.getElementById('admin').style.display = 'block';
   }
+  scroll(id: string) {
+    this.router.navigate(['./home']);
+    const el = document.getElementById(id);
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 
 }

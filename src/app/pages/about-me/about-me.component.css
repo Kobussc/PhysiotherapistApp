@@ -1,0 +1,69 @@
+.carousel-inner{
+    width:100%;
+    max-height: 700px !important;
+  }
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+  padding-top: 70px;
+}
+.carousel {
+  margin-bottom: 4rem;
+}
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.image {
+  height: 200px;
+  width: 200px;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+.adjust1:hover,
+.adjust1:focus {
+  width: 375px;
+  height: 375px;
+  margin-left: -4%;
+  margin-top: -17%;
+}
+.card {
+    -webkit-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    -moz-box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+    box-shadow: 0px 0px 22px -2px rgba(0,0,0,0.39);
+}
+@media (min-width:768px) {
+    .card-group > .card
+    {
+        width: 30%;
+        flex-wrap: nowrap;
+        flex: initial;
+    }
+}
+.card:hover,
+.card:focus {
+    transform: scale(2.5);
+    position: relative;
+    z-index: 100;
+}
+.card {
+    width: 30%;
+}
+.card-group {
+    margin-left: 27%;
+}
+.col-lg-7 {
+    padding: 1rem;
+}
